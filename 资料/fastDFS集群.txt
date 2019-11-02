@@ -1,0 +1,20 @@
+1.Tracker集群（多台电脑相互备份）
+    Tracker server之间是相互平等关系同时提供服务
+    Tracker server不存在单点故障
+    客户端请求Tracker server采用轮询方式，如果请求的tracker无法提供服务则换另一个tracker
+
+2.Storage集群
+    storage集群采用分组存储方式，由一个或多个组构成
+        一个组内多台电脑相互备份，容量最小的主机为组的容量
+    一个组由一台或多台存储服务器组成，组内的Storage server是平等关系
+    不同组的Storage server之间不会相互通信，同组内的Storage server之间会相互连接进行文件同步，从而保证同组内每个storage上的文件完全一致的
+
+3.fastDFS的扩容分纵向扩容和横向扩容
+    横向扩容
+        增加容量
+        添加grup组
+    纵向扩容
+        数据备份
+        当前组的最大容量
+            存储节点中容量最小的那个
+        所有存储节点组名必须一样
