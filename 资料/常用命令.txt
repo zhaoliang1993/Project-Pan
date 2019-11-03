@@ -1,0 +1,11 @@
+1.先启动tracker
+    ls /usr/bin/fdfs*    查看命令
+    fdfs_trackerd /etc/fdfs/tracker.conf
+    
+2.先启动tracker
+    fdfs_trackerd /etc/fdfs/storage.conf
+
+3.fdfs_monitor /etc/fdfs/client.conf 查看状态,ACTIVE为激活状态
+
+4.上传文件
+    fdfs_upload_file /etc/fdfs/client.conf test.py
