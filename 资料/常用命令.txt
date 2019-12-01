@@ -3,7 +3,7 @@
     fdfs_trackerd /etc/fdfs/tracker.conf
     
 2.先启动storage
-    fdfs_trackerd /etc/fdfs/storage.conf
+    fdfs_storaged /etc/fdfs/storage.conf
 
 3.fdfs_monitor /etc/fdfs/client.conf 查看状态,ACTIVE为激活状态
 
