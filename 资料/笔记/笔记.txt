@@ -1,0 +1,53 @@
+1.shell实现文件的上传和下载
+	test.txt==>>group1/M00/00/00/wKixgl3jw-OAf8bVAAAAHBPkrO0171.txt
+	group1-组名
+	M00-虚拟磁盘路径
+		>>对应storage.conf - stor_patch*=xxxx
+		>>00/00/ - 二级目录，存储文件的目录
+		>>wKixgl3jw-OAf8bVAAAAHBPkrO0171.txt - 文件名
+			文件名包含的信息
+				采用Base64编码
+				包含的子段包括
+					源storage server IP地址
+					文件创建时间
+					文件大小
+					文件CRC32检验码（循环冗余校验码）
+					随机数
+
+
+2.找不到动态库.so的问题
+	第一种：
+		使用环境变量LD_LIBRARY_PATCH
+		动态库的绝对路径添加到该环境变量中
+		LD_LIBRARY_PATH=/usr/include/xxx:$LD_LIBRARY_PATH(拼接)
+		export LD_LIBRARY_PATH
+			直接在shell中设置 - 临时设置
+			写入配置文件 - 永久设置
+				～/.bashrc - 用户级别
+				/etc/prefile - 系统级别
+
+	第二种：
+		给动态库设置软连接 /usr/fastdfs
+		将软连接放到/usr/lib /usr/lib64 /lib /lib64
+		sudo ln -s /usr/fastdfs/xxx.so /usr/lib/libxxx.so
+
+	第三种：
+		刷新/etc/ld.so.cache
+			首先vim /etc/ld.so.conf
+				将动态库的绝对路径写入该文件中
+			sudo ldconfig -v(-v显示处理流程)
+
+3.代码实现fastdfs文件上传和下载
+	1.fastDFS api实现
+	2.进程方式实现
+		创建匿名管道
+		创建子进程
+		子进程中执行execlp
+			关闭读端
+			将得到的文件id写入管道
+		父进程
+			读管道
+				关闭写端
+				将fileID读到内存
+				回收子进程pcb
+
