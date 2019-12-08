@@ -69,3 +69,11 @@ $ make install
     zrange zset1 0 -1 withscores分数也打印出来
     zrevrange zset1 0 -1(降序)
   
+5.key命令
+   key的生存时间：
+    key的生存时间：expire key seconds
+    查看key的剩余生存时间：ttl key
+    清楚生存时间：persist key
+    生存时间设置单位为毫秒：pexpire key milliseconds
+   删除key： del key
+   重命名：rename key1 key2
