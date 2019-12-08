@@ -33,8 +33,8 @@ $ make install
   Hash类型
   List类型
     既可以安装队列操作，也可以安装栈操作
-    左插入：lpush key value1 key2 value2 ...
-    右插入：rpush key value1 key2 value2 ...
+    左插入：lpush key value1 value2 value3 ...
+    右插入：rpush key value1 value2 value3 ...
     遍历：lrange key 0 -1
     左侧弹出一个元素：lpop key
     右侧弹出一个元素：lpop key
@@ -49,5 +49,13 @@ $ make install
     求list长度：llen key
     
   Set类型
+  set集合没有排序，里面元素不能重复
+  插入数据：sadd key value1 value2 value3 ...
+  遍历数据：smembers key
+  删除元素：srem key value1 value2 value3 ...
+  差集：sdiff key1 key2   //key1-key2
+  交集：sinter key1 key2
+  并集：sunion key1 key2
+  
   SortedSet类型zset
   
