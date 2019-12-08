@@ -31,6 +31,12 @@ $ make install
       字符串追加内容：append
       
   Hash类型
+  插入数据：hset key field value
+  读取数据：hget key field
+  插入多个数值：hmset key field1 value1 field2 value2 ...
+  读取多个数值：hmget key field1 field2 ...
+  
+  
   List类型
     既可以安装队列操作，也可以安装栈操作
     左插入：lpush key value1 value2 value3 ...
