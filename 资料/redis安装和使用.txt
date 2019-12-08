@@ -58,4 +58,8 @@ $ make install
   并集：sunion key1 key2
   
   SortedSet类型zset
+  插入：zadd key score1 value1 score2 value2 ...
+  遍历：zrange key 0 -1（升序）
+    zrange zset1 0 -1 withscores分数也打印出来
+    zrevrange zset1 0 -1(降序)
   
